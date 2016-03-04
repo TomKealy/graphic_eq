@@ -12,6 +12,7 @@ class EQModel(object):
         self.Q = 3.5
         
     def apply_gains(self):
+        """From signals and systems for dummies"""
         fs = 44100.0
         NB = len(self.gains)
         fc = 31.25*2**np.arange(5)
@@ -32,6 +33,7 @@ class EQModel(object):
         return y
 
     def peaking(self, gain, fc, Q=3.5, fs=44100.):
+        """From Signals and Systems for dummies"""
         mu = 10**(gain/20.)
 	kq = 4/(1 + mu)*np.tan(2*np.pi*fc/fs/(2*Q))
 	Cpk = (1 + kq *mu)/(1 + kq)
